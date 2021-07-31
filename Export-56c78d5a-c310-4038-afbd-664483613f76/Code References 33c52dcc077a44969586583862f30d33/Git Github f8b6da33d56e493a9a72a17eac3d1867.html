@@ -1,0 +1,733 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Git/Github</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f8b6da33-d56e-493a-9a72-a17eac3d1867" class="page sans"><header><h1 class="page-title">Git/Github</h1><table class="properties"><tbody><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg></span>Created</th><td><time>@September 30, 2020 4:11 PM</time></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Description</th><td></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Link</th><td></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th><td></td></tr></tbody></table></header><div class="page-body"><figure id="f96701d7-8d62-44e8-96f2-be1f7d7da532" class="link-to-page"><a href="Git%20Github%20f8b6da33d56e493a9a72a17eac3d1867/Publish%20and%20share%20your%20own%20website%20for%20free%20with%20G%20f96701d78d6244e896f2be1f7d7da532.html">Publish and share your own website for free with GitHub</a></figure><p id="11d82aba-0ec4-4664-a442-20ddac01fbc8" class="">
+</p><figure id="f40dc88f-661f-41a3-8fed-b1a4a49308fd"><a href="https://www.git-scm.com/docs" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Reference</div><div class="bookmark-description">Quick reference guides: GitHub Cheat Sheet | Visual Git Cheat Sheet</div></div><div class="bookmark-href"><img src="https://www.git-scm.com/favicon.ico" class="icon bookmark-icon"/>https://www.git-scm.com/docs</div></div><img src="https://www.git-scm.com/images/logo@2x.png" class="bookmark-image"/></a></figure><figure id="f26e4a31-a43a-4c6d-a75c-b229fa69afb4"><a href="https://web-crunch.com/posts/git-people-think-git-hard" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Git For People Who Think Git is Hard</div><div class="bookmark-description">Many people think Git is too advanced and a tool they will never master. The ever frightening command line keeps many designers and developers from getting their hands dirty and versioning their work. I think of Git as a security level within many levels in my own workflow.</div></div><div class="bookmark-href"><img src="https://web-crunch.com/assets/favi/apple-icon-180x180-b67d5f89541a2d8a8023c423700e9d4cbf2f2c30093418cb37a05bd821e7ebd9.png" class="icon bookmark-icon"/>https://web-crunch.com/posts/git-people-think-git-hard</div></div><img src="https://web-crunch.s3.amazonaws.com/uploads/post/feature_image/9/git-feature-image.png" class="bookmark-image"/></a></figure><figure id="69e717af-07e4-45d8-9406-e46f74482925"><a href="https://ihower.tw/git/basic.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Git 版本控制系統</div><div class="bookmark-description">本章介紹 Git 的本地操作指令，不需要網路即可操作。 Git 是分散式的，表示你不需要伺服器，在本地端就有完整的 Repository 。 從頭建立 Repository： mkdir sandbox cd sandbox git init 第一次 commit 遞交： touch README git add README git status git commit -m &quot;First Commit&quot; 修改看看： 編輯 README 做些變更 git status git diff git add . (一次加入所有變更跟新增檔案，但不包括刪除的檔案!)</div></div><div class="bookmark-href"><img src="https://ihower.tw/favicon.ico" class="icon bookmark-icon"/>https://ihower.tw/git/basic.html</div></div><img src="https://ihower.tw/git/images/basic-2.png" class="bookmark-image"/></a></figure><p id="e0c57d6f-ce3e-4be1-b402-c8ced6660fa4" class="">
+</p><h2 id="afc40e45-d49c-4463-b738-66c3413da3a2" class=""><strong>Git environment Setup</strong></h2><figure id="31b5122d-e991-4aa0-8233-216c303f5c73" class="link-to-page"><a href="Git%20Github%20f8b6da33d56e493a9a72a17eac3d1867/Git%20setup%20by%20%E8%8E%AB%E5%87%A1%2031b5122de9914aa08233216c303f5c73.html">Git setup by 莫凡</a></figure><h3 id="b424465c-122f-48f2-8854-93a883570e29" class=""><strong>Git</strong></h3><ul id="654edf51-4453-4cb9-8b3b-4ec8f72dd814" class="bulleted-list"><li><strong>Mac installation</strong><ul id="f803b096-5d32-4c44-827b-2b6c5e968de0" class="bulleted-list"><li>Step 1. Install Homebrew.</li></ul><pre id="ce5768ea-27f0-4a22-abe3-dfc251e3d582" class="code"><code>  $ /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre><ul id="f34ab456-bdde-41c6-90d6-052a5874ce47" class="bulleted-list"><li>Step 2. Install Git.</li></ul><pre id="288e6491-f879-4a2c-b428-7167247c6221" class="code"><code>  $ brew install git</code></pre></li></ul><p id="4069ce60-1a9a-4d02-a524-cf46ee78e287" class="">
+</p><p id="f7c22d12-cc2b-470c-a94d-8737dac66aef" class="">
+</p><h3 id="feef69b9-7e63-4ac1-b443-77b4b194d566" class=""><strong>SSH key</strong></h3><ul id="244f1d3f-5630-4f64-802d-c6874d73a8b0" class="bulleted-list"><li>Step 1. Enter <code>ssh-keygen -o -t rsa -b 4096 -C &quot;your email&quot;</code> in your Git bash, press enter untill the end.</li></ul><ul id="36226aeb-36a1-43ba-87bd-4efd9d18f789" class="bulleted-list"><li>Step 2. Find your key at the path the bash report, for me, it’s  <strong>&#x27;/c/Users/&lt;user_name&gt;/.ssh/id_rsa.pub’</strong></li></ul><ul id="fde816b9-d58f-4855-afa6-5e8aefffeb87" class="bulleted-list"><li>Step 3. Open the <strong>id_rsa.pub</strong> file, copy the ssh key inside to your GitLab=&gt;Setting=&gt;SSH keys</li></ul><ul id="531d8991-e62c-492e-9a42-4e6c5de9dd86" class="bulleted-list"><li>Step 4. Press Add keys, and now you can communicate GitLab with your PC now.</li></ul><p id="737aca22-0b07-43e8-9a54-83ac6d8f97d1" class="">
+</p><p id="493f633f-01a3-4a69-b0d9-9417ee988908" class="">因為我找不到ssh-key的路徑檔案，所以我重新生成key：</p><pre id="173afee1-3f35-4ec4-b71f-eb82be967028" class="code"><code>$ ssh-keygen</code></pre><p id="f70be5b9-d9c9-489b-9ef5-fd67d930b046" class="">(press `return` till the end)</p><p id="86c372d9-393c-487e-ab24-06796f9b7035" class="">(press `y` to overwrite)</p><p id="c499d6a7-c72b-48d6-8593-c2233163f535" class="">然後再：</p><pre id="ee6a7919-bd44-4f32-b740-f653a6a09930" class="code"><code>$ cat ~/.ssh/id_rsa.pub</code></pre><p id="a4396004-5e4e-4559-b01d-e8c818903840" class="">output出來的結果那一整段就都是 SSH-key</p><p id="11de769f-0a62-494d-b02e-deeac0c512b6" class="">
+</p><h3 id="b3f37d7b-28ed-47b4-9bbb-400b6f4f32da" class="">Check all your SSH keys</h3><pre id="832158e8-f4f0-4875-9c82-55263174e92a" class="code"><code>$ ls -al ~/.ssh</code></pre><p id="a5396c7a-41fd-445a-95f2-1303a8d10f6a" class="">
+</p><h2 id="e71055dd-9473-4732-9960-03ecde849972" class=""><strong>Git pull and push</strong></h2><h3 id="32417793-de95-4181-ba4b-a8cd31dec174" class=""><strong>Clone - To check out a project from gitlab</strong></h3><ul id="ca7a8325-96d3-4d93-9ad3-992a75a3dad8" class="bulleted-list"><li>Step 1. In your project, find the clone option and copy the link in <strong>Clone with HTTPS</strong>.</li></ul><ul id="d4436b01-8066-4ea4-8964-56e297f365ba" class="bulleted-list"><li>Step 2. In git bash, enter</li></ul><pre id="3b0d8475-85cf-4be4-ba45-810cf2601262" class="code"><code>$ git clone &lt;link you copy at step2&gt; &lt;where you want to put the project in your PC&gt;
+- example -
+$ git clone https://playlab.computing.ncku.edu.tw:4001/sckao/hw_n2609xxxx.git D:\hw_n2609xxxx
+</code></pre><ul id="a1e5b8be-f6d2-4b3d-8c29-31018239d899" class="bulleted-list"><li>Step 3. Now you can see files in the path you select.</li></ul><h3 id="5f47ae82-56ca-4bab-84cb-263fcf344bc1" class=""><strong>Push - update file to your GitLab</strong></h3><ul id="c1de3b0d-129e-48e1-a115-f2179e8d1326" class="bulleted-list"><li>If you change something in project folder, you can push the changes back to the GitLab.</li></ul><ul id="eeb35466-66c8-4bdf-b113-b71b5b81ea43" class="bulleted-list"><li>Step 1. Open git bash in your project folder</li></ul><ul id="f02bcc83-bdb1-4322-b76d-fb358513dca5" class="bulleted-list"><li>Step 2. enter</li></ul><pre id="f1dd6cba-af4f-4c4c-b270-c63206e2e05b" class="code"><code>$ git add .
+$ git commit -m &quot;describe changes&quot;
+$ git push</code></pre><p id="e0cd9a19-cb0d-432f-9a58-df152d284c34" class="">now you should see changes on GitLab</p><p id="38baa9f1-c9d3-4542-86c3-82139cbb2bd8" class="">or.</p><pre id="1fd116ef-38a5-4e33-af9b-9ea7ecf37d1e" class="code"><code>user@LAPTOP-N8U71LJQ MINGW64 ~
+$ cd ~/Desktop
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop
+$ cd forGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ cd DesktopforGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit/DesktopforGit (master)
+$ git add .
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit/DesktopforGit (master)
+$ git commit -m &quot;change new file&quot;
+[master 3e1b374] change new file
+ 5 files changed, 139 deletions(-)
+ delete mode 100644 .DS_Store
+ delete mode 100644 app.js
+ delete mode 100644 hello.py
+ delete mode 100644 index.html
+ delete mode 100644 main.css
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit/DesktopforGit (master)
+$ git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (1/1), done.
+Writing objects: 100% (2/2), 193 bytes | 193.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/onnnnn/forGIT.git
+   6dbaf09..3e1b374  master -&gt; master</code></pre><p id="a1ce4ea0-4324-48e9-b67e-e95d27715abf" class="">
+</p><h3 id="4b94dbd2-8d28-4ebd-91bd-d178aef322a5" class="">moving files to new dir and push to github</h3><pre id="2be9d6c2-864f-425d-aee6-f4eda3fcbe6e" class="code"><code>user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/index.html ~/Desktop/forgit/DesktopforGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/. ~/Desktop/forgit/DesktopforGit
+fatal: bad source, source=, destination=DesktopforGit/forGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/.all ~/Desktop/forgit/DesktopforGit
+fatal: bad source, source=.all, destination=DesktopforGit/.all
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/.ALL ~/Desktop/forgit/DesktopforGit
+fatal: bad source, source=.ALL, destination=DesktopforGit/.ALL
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/.css ~/Desktop/forgit/DesktopforGit
+fatal: bad source, source=.css, destination=DesktopforGit/.css
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git mv -f ~/Desktop/forGit/style.css ~/Desktop/forgit/DesktopforGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ git rm ~/Desktop/forGit/hello.py
+rm &#x27;hello.py&#x27;
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/forGit (master)
+$ cd -
+/c/Users/zionn/Desktop
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop
+$ cd DesktopforGit
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/DesktopforGit (master)
+$ git add .
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/DesktopforGit (master)
+$ git commit -m &quot;adding new html and css file&quot;
+[master d9ef7c8] adding new html and css file
+ 2 files changed, 35 insertions(+)
+ create mode 100644 index.html
+ create mode 100644 style.css
+
+user@LAPTOP-N8U71LJQ MINGW64 ~/Desktop/DesktopforGit (master)
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 727 bytes | 727.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/onnnnn/forGIT.git
+   3e1b374..d9ef7c8  master -&gt; master</code></pre><h3 id="f20abfc7-24f4-4611-be5c-a66662e689d2" class=""><strong>Pull - sync local repo with remote repo</strong></h3><ul id="8dcc173d-b4de-4cab-a663-84120af04e2b" class="bulleted-list"><li>To pull changes on GitLab</li></ul><pre id="a96427ca-9e33-4ed7-ae39-37026a106315" class="code"><code>$ git pull</code></pre><p id="b77a4b6c-69d4-45cc-b2a0-5655a14b9cb3" class="">
+</p></div></article></body></html>

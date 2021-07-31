@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Publish and share your own website for free with GitHub</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f96701d7-8d62-44e8-96f2-be1f7d7da532" class="page sans"><header><h1 class="page-title">Publish and share your own website for free with GitHub</h1></header><div class="page-body"><p id="ce9d3a88-71ce-4c26-890f-746a6594becf" class=""><a href="https://github.com/">GitHub</a> is not only a great place to store and share your code with others but they also offer free web hosting of your HTML, CSS, and JavaScript projects!</p><p id="c48ef8c2-a612-48ce-bcfa-4328525872a6" class="">In this article I’ll show you how to get setup in order to publish and share your own <a href="https://en.wikipedia.org/wiki/Static_web_page">static HTML website</a> on GitHub using the <a href="https://desktop.github.com/">GitHub Desktop</a> app! 🚀</p><h1 id="49359335-2d42-45db-8d30-3f187ae6c9fb" class=""><strong>1. Create a GitHub account</strong></h1><p id="da33e999-65ec-42dd-b5d2-e6c0c89cd035" class="">First thing’s first: <a href="https://github.com/join">get yourself a GitHub account</a>! You won’t have access to the free hosting or any other awesome features GitHub has to offer without one.</p><figure id="146fd218-3542-4e87-81d1-62646e2a8ad0" class="image"><a href="https://miro.medium.com/max/2160/1*9cs3WV8cx6EMADwzoVmmug.png"><img src="https://miro.medium.com/max/2160/1*9cs3WV8cx6EMADwzoVmmug.png"/></a></figure><p id="6bf66ea0-6b07-4338-a6c6-bcf139de1489" class="">The GitHub homepage with signup form to the right of the screen. Along the top is the main navigation area. To the left of the screen text reads, “Built for developers” with a description of what GitHub is all about.</p><p id="89c8401c-ec2a-40c4-ae8d-f861311e971f" class="">With a GitHub account you’ll also be able to chat with other web developers, such as yourself, through Issues, and <a href="https://medium.freecodecamp.org/searching-for-your-goldilocks-issue-f23b3a718de">contribute to other open source projects</a>!</p><h1 id="bdb1ee00-4ab5-48c8-9cbe-6852dbf136a1" class=""><strong>2. Download and install the GitHub Desktop app</strong></h1><p id="0dedd984-30e8-4764-bd1a-ae5c254a8d13" class="">This is the app that we’ll use to get our code up on GitHub. It’s easy to use so don’t fret; the user interface is easy to learn!</p><figure id="9d1cfad0-948f-47f1-8629-bb8d677921d6" class="image"><a href="https://miro.medium.com/max/1726/1*HWpte8U5csmYTx8DgzFewA.png"><img src="https://miro.medium.com/max/1726/1*HWpte8U5csmYTx8DgzFewA.png"/></a></figure><p id="d1c191da-b27a-4da9-addd-48988b801df7" class="">The GitHub Desktop homepage with a “Download for macOS” link, along with a Windows link. Along the top is the main navigation area. In the middle of the screen text reads, “The new native” with a description of what GitHub Desktop is all about.</p><ul id="ad1d2d47-4581-45f0-9320-bdad9eacc3d1" class="bulleted-list"><li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin">Download GitHub Desktop for </a><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin"><strong>macOS</strong></a></li></ul><ul id="1e4aebe3-4129-4a88-a429-cc47081b1671" class="bulleted-list"><li><a href="https://central.github.com/deployments/desktop/desktop/latest/win32">Download GitHub Desktop for </a><a href="https://central.github.com/deployments/desktop/desktop/latest/win32"><strong>Windows</strong></a></li></ul><p id="dff2da71-f71b-48e8-9c83-8169ffc687d3" class="">(If these links don’t work, explore the <a href="https://desktop.github.com/">GitHub Desktop</a> homepage.)</p><p id="0c93faeb-75b4-4885-bf2a-4cf27656639e" class="">Open the downloaded application file and continue through the installation process as required with your computer’s operating system.</p><p id="1b38f74a-fbfc-4329-b50a-50d41cce2075" class="">Next, we’ll be creating a new GutHub project!</p><h1 id="82c85496-25d3-4de1-a468-467246941a50" class=""><strong>3. Create a new GitHub project</strong></h1><p id="2ca58e94-8319-4b16-bfdd-e2ced88116ca" class="">Before we upload our code to GitHub we first need to make GitHub Desktop aware of our project files. We do this by creating a new <em>Repository</em> folder, then <em>copy</em> our website files to this new folder.</p><p id="9f3b8ef7-a330-4a7f-83ae-52fa1caad837" class=""><strong>3.1 — </strong>Open up the GitHub Desktop app and click the <strong>“Create New Repository”</strong> <em>button</em>.</p><figure id="9831566a-17cd-49d6-a027-cb75e0a2e1d2" class="image"><a href="https://miro.medium.com/max/402/1*g2Zobde8Do0nJRTXN_eycg.png"><img src="https://miro.medium.com/max/402/1*g2Zobde8Do0nJRTXN_eycg.png"/></a></figure><p id="0be66fa6-88f5-47b9-8a19-d9fefd23386a" class="">The “Create New Repository” button. Above, text reads, “Create a new project and publish it to GitHub”</p><p id="27c9633a-4875-40fd-9179-10f7836a0e67" class=""><strong>3.2 — </strong>When the “Create a New Repository” dialog window appears, fill in the <strong>“Name”</strong> <em>text input </em>as:</p><pre id="1bcf1c2b-8480-4e97-85af-43b5f9db1a74" class="code code-wrap"><code>[username].github.io</code></pre><blockquote id="92975340-a31e-44bb-b2ed-a09eabd76dc0" class="">Replace [username] with your GitHub account username.</blockquote><p id="9ff5086e-a560-4114-992d-e2a24c6086c1" class=""><strong>Note:</strong> It’s very important to name your repository in this manner; this will tell GitHub to host the files in this project automatically and display them when someone points their browser to:</p><pre id="d44bcd35-ad18-4518-9e8f-ef4695b34280" class="code code-wrap"><code>https://[username].github.io/</code></pre><p id="87d5ea8b-b272-426f-aa2f-0e6ceb1d98af" class="">This will be the web address you will share when your site is ready to publish and go live!</p><p id="05523f1c-dcc8-4bf9-9574-0fde78249e4b" class=""><strong>3.3 —</strong> The <strong>“Local Path”</strong> <em>text input</em> is where your repository will live on your computer; this is <strong>not</strong> where your website files currently reside on your computer’s hard drive. GitHub Desktop needs to create a new, empty folder.</p><p id="f08c8acf-f1d5-47b1-bdfc-655fd0728450" class="">We’ll need to copy your site files over later, but for now, select a folder such as <code>/Sites</code> in your home folder. This will create a new folder inside the <code>/Sites</code> folder with the name of your repository, which will look like:</p><pre id="b78b9bf5-eeed-45d7-a9c1-38a9c92551eb" class="code code-wrap"><code>/Sites/[username].github.io</code></pre><figure id="195f7228-0744-448b-a107-a9536bc654db" class="image"><a href="https://miro.medium.com/max/866/1*sqPx-566C0S4uk1Zp3_DFA.png"><img src="https://miro.medium.com/max/866/1*sqPx-566C0S4uk1Zp3_DFA.png"/></a></figure><p id="137e0c7b-2c22-4bb4-bbd4-a41751fe77f3" class="">The “Create a New Repository” dialog window. Form controls include, “Name”, “Local Path”, “Initialize this repository with a README”, “Git Ignore”, and “License”. Two action controls at the bottom are labelled, “Cancel” and “Create Repository”.</p><p id="a3671768-a375-4aef-8c84-52be7832b2e8" class=""><strong>3.4 —</strong> Leave all the other options in the form at their default settings and click the <strong>“Create Repository”</strong> <em>button</em>. For now we just want to create the folder which GitHub Desktop will recognize as a folder it can work with. For the sake of the guide, let’s describe this new folder as your <em>GitHub Repository</em> folder.</p><p id="2e6f39af-42ec-4641-9339-9c036b410307" class="">After your <em>GitHub Repository</em> folder has been created by clicking the <strong>“Create Repository”</strong> <em>button</em>, the GitHub Desktop app should look something like this:</p><figure id="9ba5c965-b17b-4d80-b299-ff24cbc08e59" class="image"><a href="https://miro.medium.com/max/2144/1*K-hGAQLyegVwhQVPHWfccQ.png"><img src="https://miro.medium.com/max/2144/1*K-hGAQLyegVwhQVPHWfccQ.png"/></a></figure><p id="9f74ef31-c28a-4ff0-959e-956c962397ac" class="">The GitHub Desktop app with an empty repository folder. Along the top are option controls for “Current Repository”, “Current Branch”, and “Publish repository”. The left side includes a space for a listing of files, a “Summary” text input, a “Description” text box, and a “Commit to master” button.</p><h1 id="81bdd614-f1aa-44ac-844e-c999e1069c36" class=""><strong>4. Copy your files to the new Repository folder</strong></h1><p id="aa5ae849-659c-4f34-a145-df2cd2eab9ea" class="">Let’s say up until now you’ve been working on your website in a folder located at <code>/Documents/my-site</code>; we’ll describe this as your <em>working folder</em>. Within this <em>working folder</em> there’s probably some files and folders named <code>index.html</code>, <code>/css</code>, or <code>/javascript</code>. What we need to do is copy <em>everything</em> from the <em>working folder</em> over to our new <em>GitHub Repository</em> folder.</p><p id="04e6883d-b6d0-463e-bf3d-391a46f3c9f2" class="">In the previous step, we created the <em>GitHub Repository</em> folder inside the <code>/Sites</code> folder with the name, <code>[username].github.io</code>. So, this means the <em>GitHub Repository</em> folder should be located at <code>/Sites/[username].github.io</code>.</p><p id="baf54f23-ca5e-4719-84e1-0e7156d20a07" class=""><strong>4.1 —</strong> Copy everything in your <em>working folder</em> (<code>/Documents/my-site</code> for example) into your <em>GitHub Repository</em> folder (<code>/Sites/[username].github.io</code>).</p><p id="481a6e2b-39a6-4489-a85c-2c7a2ce30757" class="">The GitHub Desktop app should now look something like this:</p><figure id="c9f36f5a-7db1-4c04-8e90-50ee00b19ac8" class="image"><a href="https://miro.medium.com/max/2144/1*M020yo66fYAYy6Lj0XJC6Q.png"><img src="https://miro.medium.com/max/2144/1*M020yo66fYAYy6Lj0XJC6Q.png"/></a></figure><p id="672f0a45-d6c5-4a28-a4fa-c696349acee8" class="">The GitHub Desktop app, now displaying the added files on the left side bar and the text of the highlighted file in the main section of the app.</p><p id="90f0655f-56cb-481b-a3df-2f3e9d26eec3" class="">With all our files in the <em>GitHub Repository</em> folder, we’re ready to <strong>commit</strong> our files!</p><h1 id="0108093a-b160-4f17-b538-f5c8c31e340f" class="">To “ files means to take a “snapshot” of the files and folders in their current state. By doing so, we get them ready to be up to a repository on GitHub.</h1><p id="b7438f1b-63d6-48f3-b9dc-93c541bdb964" class=""><strong>4.2 — </strong>Before we commit our files for publishing, we first need to tell GitHub what this commit is all about. Fill in the <strong>“Summary”</strong> <em>text input</em>, located near the bottom left of the user interface, with a high-level title of what this commit entails; something simple like, <em>“My first commit! 😀”</em> works just fine in this instance.</p><p id="bca8192d-9ddd-45b2-a942-77c5c462fba7" class="">Optionally, you can add more details about the commit in the <strong>“Description”</strong> <em>text box</em>. Usually you’d want to include things like what changed; maybe you fixed a bug or added some new content. It’s great to have these notes available for other developers or even <em>future you</em> to make sure you know <em>why</em> you made those changes oh so long ago!</p><p id="143c4881-2112-4060-ab2f-6ff3f176a441" class="">Once the “Summary” and optional “Description” fields are filled out to your liking, click the <strong>“Commit to master”</strong> <em>button</em>!</p><h1 id="3037856e-5c48-47db-9743-098d60bd2ccc" class=""><strong>5. Publish your website</strong></h1><p id="a6282a49-2c1d-479e-bfcc-050d60175053" class="">After clicking the <strong>“Commit to master”</strong> <em>button</em> in the previous step, you may be wondering:</p><blockquote id="3aa982fa-db91-4078-93e5-f3bfc0afb65d" class="">What just happened? My files are gone and the app is empty now!</blockquote><p id="19bde76a-1bc6-4516-aaac-50f53ca581e4" class=""><strong>Don’t fret!</strong> In the bottom left corner of the GitHub Desktop interface there’s a little indicator that your commit was successful.</p><figure id="127479be-9c32-41d8-892c-549c6e94de1b" class="image"><a href="https://miro.medium.com/max/534/1*e7su_cuM4YcWUXT88Foh1Q.png"><img src="https://miro.medium.com/max/534/1*e7su_cuM4YcWUXT88Foh1Q.png"/></a></figure><p id="d237d4f9-b443-4e5a-ac8f-a674c9a29e29" class="">Under the “Commit to master” button displays recent commit messages, each with an “Undo” button to undo the recent commit.</p><p id="a44b2ff5-c058-4500-bb08-60f74d95812b" class="">Now that our files are <em>committed,</em> this allows us to <strong>push</strong> our commit to GitHub!</p><h1 id="04701432-0b89-49b0-b4ac-c06c2fc8e080" class="">To “push” files means to upload the committed files in their current state to a repository on GitHub.</h1><p id="df026383-a60e-4b7d-bf22-efe47be8e050" class=""><strong>5.1 —</strong> Find the <strong>“Publish repository”</strong> <em>button</em> along the top of the GitHub Desktop interface.</p><figure id="762a06de-8b15-4280-a8ec-cd0adedf23ad" class="image"><a href="https://miro.medium.com/max/494/1*_Cy89mk2ZRAxWiXI3iErKQ.png"><img src="https://miro.medium.com/max/494/1*_Cy89mk2ZRAxWiXI3iErKQ.png"/></a></figure><p id="802ced92-6fd1-4fbd-8962-0ea955ad8fc7" class="">The “Publish repository” button, found along the top bar of the GitHub Desktop user interface. Text below the main label reads, “Publish this repository to GitHub”.</p><p id="94b27228-f9da-41af-b96d-e5a6e58e44a8" class="">Go ahead and <strong>click</strong> this to send your files to GitHu…</p><p id="3ab52ce4-f0b7-4efd-a018-ae011d3902e5" class=""><strong>Oh wait</strong>, we haven’t <em>logged in to GitHub</em> from within the GitHub Desktop app yet! Let’s do that, first…</p><ul id="d8330107-6a7c-46c5-b85e-a860389e55f3" class="bulleted-list"><li><em>record scratch*</em></li></ul><p id="319d817f-e51f-4b47-a743-7afba2f7beb9" class=""><strong>5.05 — </strong>When the “Publish Repository” dialog window appears after clicking the <strong>“Publish repository”</strong> <em>button</em>, it will first prompt you to sign-in to GitHub if you haven’t yet already.</p><p id="00e10bf2-59a0-4334-a277-c34cdcfeafde" class="">Click the <strong>“Sign In”</strong> <em>button</em> to show the “Sign In” dialog window; fill in your Username and Password and click the <strong>“Sign In”</strong> <em>button</em> to complete the process. You should now be logged in and good to proceed!</p><figure id="718332ec-e713-43cc-a415-5dbcc406265b" class="image"><a href="https://miro.medium.com/max/872/1*J1bI0-TNH_lRHXBEgZAhHA.png"><img src="https://miro.medium.com/max/872/1*J1bI0-TNH_lRHXBEgZAhHA.png"/></a></figure><p id="e071cd97-792a-45f8-8eb3-910952fe0fbd" class="">The “Sign In” dialog window featuring a “Username or email address” and “Password” text inputs. A link to optionally “Sign in using your browser” is also available. Two action controls at the bottom are labelled, “Cancel” and “Sign In”.</p><p id="9186b7af-4421-4620-bcf6-a31d52237727" class=""><strong>5.1, take 2 — </strong>Now that we’re signed in to GitHub, go ahead and click the <strong>“Publish repository”</strong> <em>button </em>to begin the upload process.</p><p id="a86b1eb4-9bda-4303-ba6b-25fbd66d36cb" class=""><strong>5.2 —</strong> The “Publish Repository” dialog window will appear with a last few options for you to choose from before placing your website live.</p><p id="286b7351-8dab-4ebf-ba3e-b41000661b32" class="">All the options in the form are fine as-is except the <strong>“Keep this code private”</strong> <em>checkbox</em>; this needs to be <em>unchecked</em> in order for you to share your site with friends and family.</p><figure id="39f3089f-6696-4594-b6b9-663ad836aed9" class="image"><a href="https://miro.medium.com/max/457/1*MrPaZh_Peq3VBk-aLOGSVQ.gif"><img src="https://miro.medium.com/max/457/1*MrPaZh_Peq3VBk-aLOGSVQ.gif"/></a></figure><p id="891b656a-43bf-49b5-ad08-4c70a8288234" class="">An animated graphic of the “Publish Repository” dialog window. A computer mouse cursor moves in and sets the “Keep this code private” as unchecked. Other controls include, “Name”, “Description”, and “Organization”. Two action controls at the bottom are labelled, “Cancel” and “Publish Repository”.</p><p id="ffec3a12-c0f7-4f04-835a-3282bb6e422d" class=""><strong>5.3 —</strong> Click the <strong>“Publish Repository”</strong> <em>button</em> to send your files up to GitHub!</p><p id="2dca332c-95d3-4eed-8966-92819560e706" class="">Now, in your browser, go to your new GitHub repository page to make sure your files made the journey to their new home:</p><pre id="92a8c1eb-9104-4c32-af3a-cdfcf4ff2ece" class="code code-wrap"><code>https://github.com/[username]/[username].github.io</code></pre><p id="5fe9d4fa-9f89-4ef6-bcf6-231b90ab84a6" class="">Are all your files present and accounted for? Good! Nice job! 👍</p><h1 id="bbffe7b2-97e5-4d21-99c2-cc0ac25bd91f" class=""><strong>6. Share your website!</strong></h1><p id="f05e27fe-02d4-4463-9c40-041369687660" class="">The very last step is to get excited and check out your website in your browser! Surf on over to:</p><pre id="8cd60c6e-e38d-4618-932b-b7746a6679e5" class="code code-wrap"><code>https://[username].github.io/</code></pre><p id="4a70d3b2-e733-4ed5-9087-6d3fa5cae086" class="">Your website should appear before your very eyes! ✨😄✨</p><figure id="2481eefb-e607-4b0c-b78a-096158fd788e" class="image"><a href="https://miro.medium.com/max/275/1*mPUc2fU1VPbW6gjbw1DjeQ.gif"><img src="https://miro.medium.com/max/275/1*mPUc2fU1VPbW6gjbw1DjeQ.gif"/></a></figure><p id="8df5c3f6-34fb-4da7-9722-cee5bcfc3f27" class=""><strong>Congrats!</strong> You’re all set! You now know how to:</p><ol id="3bab7dfe-dbe5-43c2-83d3-9df395920313" class="numbered-list" start="1"><li>Create a new GitHub repository</li></ol><ol id="65271cf5-5f64-488a-90b0-cd8e3fddc71c" class="numbered-list" start="2"><li>Commit files to said repository, and</li></ol><ol id="c83d3107-d92d-4f1e-a713-a1a6ed0caeda" class="numbered-list" start="3"><li>Push files up to GitHub!</li></ol><p id="4e268159-6b3a-4f24-8210-3608014d3282" class="">From here you can see your files are on GitHub and you can view your project in the browser!</p><p id="1a193c10-c52d-4d98-bbe1-5626f230abe6" class="">Whenever you want to make changes to your website, you just need to <strong>commit</strong> the changes and then <strong>push</strong> the files up to your GitHub repository. Your changes will be published automatically!</p><p id="72e9d00d-6779-44b1-9ecc-5ccd311f8314" class="">Don’t forget to share your new, beautiful creation on your social media channels for some ❤️, or just send an email to your Mom. Either way, <em>great work</em>! 🎉</p><p id="e96c57f3-651f-4572-8de9-f4e37713e8b6" class="">Consider sharing or writing about your recently gained knowledge and experience with others so that they, too, will have the knowledge and confidence to publish and share their own creations! 🙂</p><p id="5a946b0b-1e94-4a13-93d3-b9493105a25d" class="">Let me know if I missed any steps, if something didn’t work out quite right for you, or if this guide was helpful! Thank you for reading!</p><p id="731a173a-0fe7-4fe8-a53d-feb64dac2c84" class="">Happy hacking! 💻😄💖</p></div></article></body></html>
